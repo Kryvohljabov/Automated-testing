@@ -1,0 +1,12 @@
+{
+  "name": "Automated-testing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lab_1": "pnpm --filter lab_1 run test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
