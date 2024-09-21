@@ -1,34 +1,38 @@
-// laba_1/test/mtrx.test.js
-const { expect } = require("chai");
-const Mtrx = require("mtrx");
+import { expect } from "chai";
+import Mtrx from "mtrx";
 
 describe("Mtrx Library Tests", () => {
   it("should correctly multiply two matrices", () => {
-    const a = [
+    const a = new Mtrx([
       [1, 2],
       [3, 4],
-    ];
-    const b = [
+    ]);
+
+    const b = new Mtrx([
       [5, 6],
       [7, 8],
-    ];
-    const expected = [
+    ]);
+
+    const expected = new Mtrx([
       [19, 22],
       [43, 50],
-    ];
-    const result = Mtrx.multiply(a, b);
-    expect(result).to.deep.equal(expected);
+    ]);
+
+    const result = Mtrx.mul(a, b);
+
+    expect(Mtrx.equalAll(result, expected)).equal(true);
   });
 
   it("should throw an error for incompatible matrices", () => {
-    const a = [
+    const a = new Mtrx([
       [1, 2, 3],
       [4, 5, 6],
-    ];
-    const b = [
+    ]);
+    const b = new Mtrx([
       [7, 8],
       [9, 10],
-    ];
-    expect(() => Mtrx.multiply(a, b)).to.throw();
+    ]);
+
+    expect(() => a.mul(b)).to.throw();
   });
 });
