@@ -21,6 +21,15 @@ importers:
         specifier: ^10.7.3
         version: 10.7.3
 
+  lab_2:
+    devDependencies:
+      chai:
+        specifier: ^5.1.1
+        version: 5.1.1
+      mocha:
+        specifier: ^10.7.3
+        version: 10.7.3
+
 packages:
 
   ansi-colors@4.1.3:
