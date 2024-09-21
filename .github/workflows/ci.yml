@@ -1,4 +1,3 @@
-# .github/workflows/ci.yml
 name: CI
 
 on:
@@ -27,8 +26,11 @@ jobs:
       - name: Install pnpm
         run: npm install -g pnpm
 
+      - name: Update PATH
+        run: echo "$HOME/.local/share/pnpm" >> $GITHUB_PATH
+
       - name: Install Dependencies
         run: pnpm install
 
       - name: Run Tests
-        run: pnpm test --filter 'laba_*'
+        run: pnpm test --filter 'lab_*'
