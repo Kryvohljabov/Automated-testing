@@ -29,4 +29,6 @@ jobs:
         run: pnpm install
 
       - name: Run Tests
+        env:
+          ACCESS_TOKEN: ${{ secrets.GOREST_ACCESS_TOKEN }}
         run: pnpm test --filter 'lab_*'
