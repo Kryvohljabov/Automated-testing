@@ -25,7 +25,7 @@ describe("Demo Store Automation", function () {
   });
 
   after(async function () {
-    await driver.quit();
+    await driver.close();
   });
 
   it("should navigate through all pages and register a new user", async function () {
