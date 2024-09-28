@@ -1,15 +1,24 @@
 import { expect } from "chai";
 import { Builder, By, until } from "selenium-webdriver";
+import chrome from "selenium-webdriver/chrome.js";
 
 describe("Math Page Automation", function () {
   let driver;
 
   before(async function () {
-    driver = await new Builder().forBrowser("chrome").build();
+    const options = new chrome.Options().addArguments("--headless");
+    // .addArguments("--no-sandbox")
+    // .addArguments("--disable-dev-shm-usage")
+    // .addArguments("--disable-gpu");
+
+    driver = await new Builder()
+      .forBrowser("chrome")
+      .setChromeOptions(options)
+      .build();
   });
 
   after(async function () {
-    await driver.close();
+    await driver.quit(); // Use quit instead of close to ensure proper cleanup
   });
 
   it("should solve the math problem and submit the form", async function () {

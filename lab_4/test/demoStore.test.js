@@ -1,5 +1,6 @@
 import { expect } from "chai";
 import { Builder, By, until } from "selenium-webdriver";
+import chrome from "selenium-webdriver/chrome.js";
 
 // Function to generate a random string of a given length
 function generateRandomString(length) {
@@ -21,7 +22,15 @@ describe("Demo Store Automation", function () {
   let driver;
 
   before(async function () {
-    driver = await new Builder().forBrowser("chrome").build();
+    const options = new chrome.Options().addArguments("--headless");
+    // .addArguments("--no-sandbox")
+    // .addArguments("--disable-dev-shm-usage")
+    // .addArguments("--disable-gpu");
+
+    driver = await new Builder()
+      .forBrowser("chrome")
+      .setChromeOptions(options)
+      .build();
   });
 
   after(async function () {
