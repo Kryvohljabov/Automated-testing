@@ -6,7 +6,8 @@
   "scripts": {
     "lab_1": "pnpm --filter lab_1 run test",
     "lab_2": "pnpm --filter lab_2 run test",
-    "lab_3": "pnpm --filter lab_3 run test"
+    "lab_3": "pnpm --filter lab_3 run test",
+    "lab_4": "pnpm --filter lab_4 run test"
   },
   "keywords": [],
   "author": "",
