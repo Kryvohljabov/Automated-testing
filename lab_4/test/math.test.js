@@ -7,9 +7,6 @@ describe("Math Page Automation", function () {
 
   before(async function () {
     const options = new chrome.Options().addArguments("--headless");
-    // .addArguments("--no-sandbox")
-    // .addArguments("--disable-dev-shm-usage")
-    // .addArguments("--disable-gpu");
 
     driver = await new Builder()
       .forBrowser("chrome")
@@ -18,10 +15,10 @@ describe("Math Page Automation", function () {
   });
 
   after(async function () {
-    await driver.quit(); // Use quit instead of close to ensure proper cleanup
+    await driver.close();
   });
 
-  it("should solve the math problem and submit the form", async function () {
+  it("should solve the math problem and submit the form", async function (done) {
     this.timeout(30000);
 
     await driver.get("http://suninjuly.github.io/math.html");
@@ -36,5 +33,6 @@ describe("Math Page Automation", function () {
     const alertText = await alert.getText();
     await alert.accept();
     expect(alertText).to.include("Congrats, you've passed the task!");
+    done();
   });
 });

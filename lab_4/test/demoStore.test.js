@@ -23,9 +23,6 @@ describe("Demo Store Automation", function () {
 
   before(async function () {
     const options = new chrome.Options().addArguments("--headless");
-    // .addArguments("--no-sandbox")
-    // .addArguments("--disable-dev-shm-usage")
-    // .addArguments("--disable-gpu");
 
     driver = await new Builder()
       .forBrowser("chrome")
@@ -37,7 +34,7 @@ describe("Demo Store Automation", function () {
     await driver.close();
   });
 
-  it("should navigate through all pages and register a new user", async function () {
+  it("should navigate through all pages and register a new user", async function (done) {
     this.timeout(30000);
 
     await driver.get("http://demo-store.seleniumacademy.com");
@@ -103,5 +100,7 @@ describe("Demo Store Automation", function () {
         "IT WORKS IF DONE BY HAND, FOR HEAVEN'S SAKE! I TOOK SELENIUM COURSES LAST YEAR, AND NO ONE MENTIONED PHP SIDE ERRORS. THIS IS ABSURD! ADMIN MUST BE CLUELESS OR FORGOT TO UPDATE PHP!",
       );
     }
+
+    done();
   });
 });
