@@ -3,6 +3,12 @@ import { expect } from "chai";
 const server = "https://gorest.co.in/public/v2";
 const accessToken = process.env.GOREST_ACCESS_TOKEN;
 
+if (!accessToken) {
+  throw new Error(
+    "No token provided. Please set the GOREST_ACCESS_TOKEN environment variable.",
+  );
+}
+
 const randomString = (length) => {
   const characters =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
