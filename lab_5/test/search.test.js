@@ -12,10 +12,16 @@ describe("Page interaction", function () {
       .forBrowser("chrome")
       .setChromeOptions(options)
       .build();
+
+    this.timeout(60000);
   });
 
   after(async function () {
-    await driver.close();
+    if (driver) {
+      await driver.close();
+      return;
+    }
+    console.warn("No driver to close");
   });
 
   it("should search for a product and add it to the cart", async function () {

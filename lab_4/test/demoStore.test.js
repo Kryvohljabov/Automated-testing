@@ -29,15 +29,19 @@ describe("Demo Store Automation", function () {
       .setChromeOptions(options)
       .build();
 
-    this.timeout(30000);
+    this.timeout(60000);
   });
 
   after(async function () {
-    await driver.close();
+    if (driver) {
+      await driver.close();
+      return;
+    }
+    console.warn("No driver to close");
   });
 
   it("should navigate through all pages and register a new user", async function () {
-    this.timeout(30000);
+    this.timeout(60000);
 
     await driver.get("http://demo-store.seleniumacademy.com");
 
