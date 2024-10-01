@@ -28,11 +28,11 @@ describe("Page interaction", function () {
     await driver.wait(until.elementLocated(By.css(".product-info")), 1000);
     await driver.findElement(By.css(".product-info")).click();
 
-    await driver.wait(until.elementLocated(By.id("option15")), 10000);
-    await driver.findElement(By.id("option15")).click();
+    await driver.wait(until.elementLocated(By.id("swatch15")), 10000);
+    await driver.findElement(By.id("swatch15")).click();
 
-    await driver.wait(until.elementLocated(By.id("option78")), 10000);
-    await driver.findElement(By.id("option78")).click();
+    await driver.wait(until.elementLocated(By.id("swatch78")), 10000);
+    await driver.findElement(By.id("swatch78")).click();
 
     const addToCartDiv = await driver.findElement(
       By.className("add-to-cart-buttons"),
