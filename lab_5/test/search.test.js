@@ -18,7 +18,7 @@ describe("Page interaction", function () {
 
   after(async function () {
     if (driver) {
-      await driver.close();
+      await driver.quit();
       return;
     }
     console.warn("No driver to close");

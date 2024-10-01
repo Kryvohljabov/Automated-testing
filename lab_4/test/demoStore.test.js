@@ -34,7 +34,7 @@ describe("Demo Store Automation", function () {
 
   after(async function () {
     if (driver) {
-      await driver.close();
+      await driver.quit();
       return;
     }
     console.warn("No driver to close");

@@ -17,7 +17,7 @@ describe("Math Page Automation", function () {
   });
 
   after(async function () {
-    await driver.close();
+    await driver.quit();
   });
 
   it("should solve the math problem and submit the form", async function () {
