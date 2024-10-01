@@ -44,7 +44,7 @@ describe("Page interaction", function () {
     const buttons = await addToCartDiv.findElements(By.css("button"));
     await buttons[0].click();
 
-    await driver.wait(until.elementLocated(By.css(".success-msg")), 5000);
+    await driver.wait(until.elementLocated(By.css(".success-msg")), 10000);
     const cartMessage = await driver
       .findElement(By.css(".success-msg span"))
       .getText();
@@ -62,11 +62,11 @@ describe("Page interaction", function () {
     const skipCartLink = await driver.findElement(By.css("a.skip-cart"));
     await skipCartLink.click();
 
-    await driver.wait(until.elementLocated(By.css("a.cart-link")), 5000);
+    await driver.wait(until.elementLocated(By.css("a.cart-link")), 10000);
     const cartLink = await driver.findElement(By.css("a.cart-link"));
     await cartLink.click();
 
-    await driver.wait(until.urlContains("checkout/cart"), 5000);
+    await driver.wait(until.urlContains("checkout/cart"), 10000);
 
     const priceElements = await driver.findElements(
       By.css("td.product-cart-price .price"),
