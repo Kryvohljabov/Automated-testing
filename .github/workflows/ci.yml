@@ -32,9 +32,9 @@ jobs:
         env:
           GOREST_ACCESS_TOKEN: ${{ secrets.GOREST_ACCESS_TOKEN }}
         run: |
-          pnpm test --file lab_1.js
-          pnpm test --file lab_2.js
-          pnpm test --file lab_3.js
-          pnpm test --file lab_4.js
-          pnpm test --file lab_5.js
-          pnpm test --file lab_6.js
+          pnpm test --filter 'lab_1'
+          pnpm test --filter 'lab_2'
+          pnpm test --filter 'lab_3'
+          pnpm test --filter 'lab_4'
+          pnpm test --filter 'lab_5'
+          pnpm test --filter 'lab_6'
