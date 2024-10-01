@@ -8,6 +8,7 @@
     "lab_2": "pnpm --filter lab_2 run test",
     "lab_3": "pnpm --filter lab_3 run test",
     "lab_4": "pnpm --filter lab_4 run test",
+    "lab_5": "pnpm --filter lab_5 run test",
     "lab_6": "pnpm --filter lab_6 run test"
   },
   "keywords": [],

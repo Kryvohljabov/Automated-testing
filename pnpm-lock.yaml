@@ -57,6 +57,18 @@ importers:
         specifier: ^4.25.0
         version: 4.25.0
 
+  lab_5:
+    dependencies:
+      chai:
+        specifier: ^5.1.1
+        version: 5.1.1
+      mocha:
+        specifier: ^10.7.3
+        version: 10.7.3
+      selenium-webdriver:
+        specifier: ^4.25.0
+        version: 4.25.0
+
   lab_6:
     dependencies:
       chai:
