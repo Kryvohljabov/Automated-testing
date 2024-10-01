@@ -32,7 +32,8 @@ describe("Page interaction", function () {
     await driver.findElement(By.xpath('//button[@title="Search"]')).click();
 
     await driver.wait(until.elementLocated(By.css(".product-info")), 1000);
-    await driver.findElement(By.css(".product-info")).click();
+    const productInfo = await driver.findElement(By.css(".product-info"));
+    await productInfo.findElement(By.css("a[title='View Details']")).click();
 
     await driver.wait(
       until.elementLocated(By.id("product_addtocart_form")),
