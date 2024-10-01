@@ -40,12 +40,6 @@ describe("Page interaction", function () {
       10000,
     );
 
-    const isDisplayed = await formElement.isDisplayed();
-    const isEnabled = await formElement.isEnabled();
-
-    console.log("isDisplayed", isDisplayed);
-    console.log("isEnabled", isEnabled);
-
     await driver.findElement(By.id("swatch15")).click();
     await driver.findElement(By.id("swatch78")).click();
 
