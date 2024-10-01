@@ -34,7 +34,17 @@ describe("Page interaction", function () {
     await driver.wait(until.elementLocated(By.css(".product-info")), 1000);
     await driver.findElement(By.css(".product-info")).click();
 
-    await driver.wait(until.elementLocated(By.id("swatch15")), 10000);
+    await driver.wait(
+      until.elementLocated(By.id("product_addtocart_form")),
+      10000,
+    );
+
+    const isDisplayed = await formElement.isDisplayed();
+    const isEnabled = await formElement.isEnabled();
+
+    console.log("isDisplayed", isDisplayed);
+    console.log("isEnabled", isEnabled);
+
     await driver.findElement(By.id("swatch15")).click();
     await driver.findElement(By.id("swatch78")).click();
 
