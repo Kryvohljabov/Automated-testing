@@ -18,7 +18,7 @@ describe("Page interaction", function () {
     await driver.close();
   });
 
-  it("test shopping cart", async function () {
+  it("should search for a product and add it to the cart", async function () {
     this.timeout(60000);
     await driver.get("http://demo-store.seleniumacademy.com");
     const productName = "Top";
@@ -30,16 +30,12 @@ describe("Page interaction", function () {
 
     await driver.wait(until.elementLocated(By.id("swatch15")), 10000);
     await driver.findElement(By.id("swatch15")).click();
-
-    await driver.wait(until.elementLocated(By.id("swatch78")), 10000);
     await driver.findElement(By.id("swatch78")).click();
 
     const addToCartDiv = await driver.findElement(
       By.className("add-to-cart-buttons"),
     );
-
     const buttons = await addToCartDiv.findElements(By.css("button"));
-
     await buttons[0].click();
 
     await driver.wait(until.elementLocated(By.css(".success-msg")), 5000);
@@ -50,36 +46,51 @@ describe("Page interaction", function () {
     expect(cartMessage).to.equal(
       "Sullivan Sport Coat was added to your shopping cart.",
     );
+  });
 
-    let priceElements = await driver.findElements(
+  it("should update the quantity and verify the price change", async function () {
+    this.timeout(60000);
+    await driver.get("http://demo-store.seleniumacademy.com");
+
+    await driver.wait(until.elementLocated(By.css("a.skip-cart")), 10000);
+    const skipCartLink = await driver.findElement(By.css("a.skip-cart"));
+    await skipCartLink.click();
+
+    await driver.wait(until.elementLocated(By.css("a.cart-link")), 5000);
+    const cartLink = await driver.findElement(By.css("a.cart-link"));
+    await cartLink.click();
+
+    await driver.wait(until.urlContains("checkout/cart"), 5000);
+
+    const priceElements = await driver.findElements(
       By.css("td.product-cart-price .price"),
     );
-    let priceText = await priceElements[0].getText();
-    let unitPrice = parseFloat(priceText.replace("$", ""));
+    expect(priceElements.length).to.equal(1);
 
-    let qtyInput = await driver.findElement(By.css('input[title="Qty"]'));
+    const priceText = await priceElements[0].getText();
+    const unitPrice = parseFloat(priceText.replace("$", ""));
+    expect(unitPrice).to.be.a("number").and.not.NaN;
+
+    // Change the quantity of the item and update
+    const qtyInput = await driver.findElement(By.css('input[title="Qty"]'));
     await qtyInput.clear();
-    let newQty = "2";
+    const newQty = "2";
     await qtyInput.sendKeys(newQty);
 
-    let updateButton = await driver.findElement(
-      By.css(`button[title="Update"]`),
+    const updateButton = await driver.findElement(
+      By.css('button[title="Update"]'),
     );
     await updateButton.click();
 
     await driver.sleep(2000);
 
-    let newPriceElement = await driver.findElement(
+    const newPriceElement = await driver.findElement(
       By.css(".product-cart-total .price"),
     );
-    let newSubtotalText = await newPriceElement.getText();
+    const newSubtotalText = await newPriceElement.getText();
+    const newSubtotal = parseFloat(newSubtotalText.replace(/[$,]/g, ""));
 
-    let newSubtotal = parseFloat(
-      newSubtotalText.replace(/[$,]/g, "").replace("$", ""),
-    );
-
-    let expectedSubtotal = unitPrice * parseInt(newQty);
-
+    const expectedSubtotal = unitPrice * parseInt(newQty);
     expect(newSubtotal).to.equal(expectedSubtotal);
   });
 });
