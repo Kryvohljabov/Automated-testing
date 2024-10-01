@@ -47,12 +47,6 @@ describe("Demo Store Automation", function () {
 
     await driver.findElement(By.className("skip-account")).click();
 
-    await driver.wait(until.elementLocated(By.className("links")), 5000);
-    await driver.wait(
-      until.elementIsVisible(driver.findElement(By.className("links"))),
-      5000,
-    );
-
     await driver.findElement(By.xpath('//li/a[@title="Register"]')).click();
 
     const firstName = generateRandomString(6);
