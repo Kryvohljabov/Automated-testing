@@ -31,4 +31,10 @@ jobs:
       - name: Run Tests
         env:
           GOREST_ACCESS_TOKEN: ${{ secrets.GOREST_ACCESS_TOKEN }}
-        run: pnpm test --filter 'lab_*'
+        run: |
+          pnpm test --file lab_1.js
+          pnpm test --file lab_2.js
+          pnpm test --file lab_3.js
+          pnpm test --file lab_4.js
+          pnpm test --file lab_5.js
+          pnpm test --file lab_6.js
